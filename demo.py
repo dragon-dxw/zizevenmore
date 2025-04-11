@@ -23,7 +23,9 @@ def main():
 
 
 def do_zizmor(repo):
-    process = subprocess.run(["zizmor", repo, "--format", "json"], capture_output=True)
+    process = subprocess.run(
+        ["zizmor", repo, "--format", "json"], capture_output=True, env=os.environ
+    )
     # Some errors are acceptable
     stdout = process.stdout.decode("utf-8")
     stderr = process.stderr.decode("utf-8")
